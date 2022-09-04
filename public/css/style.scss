@@ -140,9 +140,12 @@ main {
             }
            
         }
+        p {
+            color: $gray-blue;
+        }
         .updateContainer {
             width: 100%;
-            display: none;
+            display: flex;
             justify-content: flex-end;
             button {
     padding: 1rem 2rem;
@@ -198,6 +201,9 @@ main {
                 height: 6rem;
                 resize: none;
                 padding: 1rem 1rem;
+                border-radius: 8px;
+                border-color: $light-gray;
+                cursor: pointer;
                 &::placeholder {
                     font-size: 1rem;
                 }
@@ -247,6 +253,9 @@ main {
                 height: 6rem;
                 resize: none;
                 padding: 1rem 1rem;
+                border-radius: 8px;
+                border-color: $light-gray;
+                cursor: pointer;
                 &::placeholder {
                     font-size: 1rem;
                 }
@@ -262,13 +271,41 @@ main {
             }
         }
 }
-.textarea {
-   width: 100%;
-    height: min-content;
-    min-height: 5rem;
-    resize: none;
-    padding: 1rem 1rem;
-    font-size: 1rem;
+
+.editForm {
+    width: 90%;
+    display: none;
+    flex-direction: column;
+    position: relative;
+    gap: 1.5rem;
+    .textarea {
+        width: 100%;
+         height: min-content;
+         min-height: 8rem;
+         resize: none;
+         padding: 1rem 1rem;
+         font-size: 1rem;
+         border-radius: 8px;
+        border-color: $light-gray;
+         cursor: pointer;
+     }
+}
+.editForm.show {
+    display: flex;
+}
+.editable {
+    display: block;
+}
+.editable.hide {
+    display: none;
+}
+.created {
+    color: $gray-blue;
+}
+.userTag {
+    font-weight: 700;
+    color: $mid-blue;
+    cursor: pointer;
 }
 .clickable {
     cursor: pointer;
@@ -277,11 +314,18 @@ main {
         opacity: .5;
     }
 }
+.you {
+    padding: .1rem .5rem;
+    background-color: $mid-blue;
+    color: white;
+    font-size: .8rem;
+}
 .icon {
     display: inline-block;
     background-repeat: no-repeat;
     background-position: center center;
   }
+
 .reply {
     background-image: url(/images/icon-reply.svg);
    width: 24px;
@@ -302,10 +346,16 @@ main {
    width: 24px;
    height: 24px;
 }
+.plus.selected {
+    background-image: url(/images/icon-plus-selected.svg);
+}
 .minus {
     background-image: url(/images/icon-minus.svg);
    width: 24px;
    height: 24px;
+}
+.minus.selected {
+    background-image: url(/images/icon-minus-selected.svg);
 }
 
 @media (max-width: 700px) {

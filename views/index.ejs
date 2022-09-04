@@ -31,10 +31,18 @@
   <section class="thread">
     <% if (comment.user._id=='63144e8ec1250ba70cc3efbb') { %>
   <section class="comment">
-    <div class="upvoter">
-      <span class="icon plus clickable"></span>
-      <span><%=comment.score%></span>
-      <span class="icon minus clickable"></span>
+    <div class="upvoter" data-commentid="<%=comment._id%>">
+      <% if (comment.upvoted) { %>
+      <span class="icon plus clickable upvote selected"></span>
+      <% } else {%>
+        <span class="icon plus clickable upvote"></span>
+        <% }%>
+      <span class="score"><%=comment.score%></span>
+      <% if (comment.downvoted) { %>
+        <span class="icon minus clickable upvote selected"></span>
+        <% } else {%>
+          <span class="icon minus clickable upvote"></span>
+          <% }%>
     </div>
     <section class="info">
       <section class="infoTop">
@@ -43,9 +51,9 @@
           <img src="<%=comment.user.image%>">
           <h4><%=comment.user.username%></h4>
           <% if (comment.createdString) { %>
-          <span><%= comment.createdString%>  </span>
+          <span class="created"><%= comment.createdString%>  </span>
           <% } else {%>
-            <span><%= moment(comment.created).fromNow() %>  </span>
+            <span class="created"><%= moment(comment.created).fromNow() %>  </span>
             <% }%>
         </div>
         <div class="action">
@@ -55,21 +63,34 @@
           
         </div>
         
-        <div class="button clickable editButton">
+        <div class="button clickable editButton editComment" data-id="<%=comment._id%>">
           <span class="icon edit"></span>
           <span>Edit</span>
         </div>
         </div>
       </section>
-      <p><%=comment.content%></p>
+      <p class="editable"><%=comment.content%></p>
+      <form class="editForm" >
+        <textarea class="textarea"></textarea>
+        <section class="updateContainer"><button class="clickable updateButton" data-id="<%=comment._id%>">UPDATE</button></section>
+      </form>
     </section>
   </section>
   <% } else {%>
     <section class="comment">
-      <div class="upvoter">
-        <span class="icon plus clickable"></span>
-        <span><%=comment.score%></span>
-        <span class="icon minus clickable"></span>
+      <div class="upvoter" data-commentid="<%=comment._id%>">
+        <% if (comment.upvoted) { %>
+          <span class="icon plus clickable upvote selected"></span>
+          <% } else {%>
+            <span class="icon plus clickable upvote"></span>
+            <% }%>
+        <span class="score"><%=comment.score%></span>
+        <% if (comment.downvoted) { %>
+          <span class="icon minus clickable upvote selected"></span>
+          <% } else {%>
+            <span class="icon minus clickable upvote"></span>
+            <% }%>
+       
       </div>
       <section class="info">
         <section class="infoTop">
@@ -78,9 +99,9 @@
             <img src="<%=comment.user.image%>">
             <h4><%=comment.user.username%></h4>
             <% if (comment.createdString) { %>
-            <span><%= comment.createdString%>  </span>
+            <span class="created"><%= comment.createdString%>  </span>
             <% } else {%>
-              <span><%= moment(comment.created).fromNow() %>  </span>
+              <span class="created"><%= moment(comment.created).fromNow() %>  </span>
               <% }%>
           </div>
           <div class="action">
@@ -98,8 +119,8 @@
     <div>
       <img src="/images/avatars/image-juliusomo.png" alt="avatar">
     </div>
-    <form>
-    <textarea type="text" placeholder="Add a comment..."></textarea>
+    <form method="post" action="<%=comment.user._id%>/<%=comment._id%>/add-reply">
+    <textarea type="text" placeholder="@<%=comment.user.username%>" name="content"></textarea>
     <button class="clickable">REPLY</button>
   </form>
   </section>
@@ -108,32 +129,48 @@
     <% if (reply.user._id=='63144e8ec1250ba70cc3efbb') { %>
       <section class="replySection">
         <section class="comment">
-          <div class="upvoter">
-            <span class="icon plus clickable"></span>
-            <span><%=reply.score%></span>
-            <span class="icon minus clickable"></span>
+          <div class="upvoter" data-replyid="<%=reply._id%>">
+            <% if (reply.upvoted) { %>
+              <span class="icon plus clickable upvote selected"></span>
+              <% } else {%>
+                <span class="icon plus clickable upvote"></span>
+                <% }%>
+              <span class="score"><%=reply.score%></span>
+              <% if (reply.downvoted) { %>
+                <span class="icon minus clickable upvote selected"></span>
+                <% } else {%>
+                  <span class="icon minus clickable upvote"></span>
+                  <% }%>
           </div>
           <section class="info">
             <section class="infoTop">
               <div>
                 <img src="/images/avatars/image-juliusomo.png" alt="avatar">
                 <h4><%=reply.user.username%></h4>
-                <span>you</span>
-                <span><%=reply.createdString%></span>
+                <span class="you">you</span>
+                <% if (reply.createdString) { %>
+                  <span class="created"><%= reply.createdString%>  </span>
+                  <% } else {%>
+                    <span class="created"><%= moment(reply.created).fromNow() %>  </span>
+                    <% }%>
               </div>
               <div class="action">
                 <div class="button clickable deleteButton deleteReply" data-id="<%=reply._id%>" data-commentId="<%=comment._id%>">
                 <span class="icon delete"></span>
                 <span>Delete</span>
               </div>
-              <div class="button clickable editButton">
+              <div class="button clickable editButton editReply" data-id="<%=reply._id%>">
                 <span class="icon edit"></span>
                 <span>Edit</span>
               </div>
               </div>
             </section>
-            <p class="editable"><%=reply.content%></p>
-          <section class="updateContainer"><button class="clickable updateButton" data-id="<%=reply._id%>">UPDATE</button></section>
+            <p class="editable"><span class="userTag">@<%=reply.replyingTo.username%></span> <span class="mainText"><%=reply.content%></span> </p>
+            <form class="editForm" >
+              <textarea class="textarea"></textarea>
+              <section class="updateContainer"><button class="clickable updateButton" data-id="<%=reply._id%>">UPDATE</button></section>
+            </form>
+          
           
           </section>
         </section>
@@ -150,17 +187,29 @@
   <% } else {%>
     <section class="replySection">
       <section class="comment">
-        <div class="upvoter">
-          <span class="icon plus clickable"></span>
-          <span><%=reply.score%></span>
-          <span class="icon minus clickable"></span>
+        <div class="upvoter" data-replyid="<%=reply._id%>">
+          <% if (reply.upvoted) { %>
+            <span class="icon plus clickable upvote selected"></span>
+            <% } else {%>
+              <span class="icon plus clickable upvote"></span>
+              <% }%>
+            <span class="score"><%=reply.score%></span>
+            <% if (reply.downvoted) { %>
+              <span class="icon minus clickable upvote selected"></span>
+              <% } else {%>
+                <span class="icon minus clickable upvote"></span>
+                <% }%>
         </div>
         <section class="info">
           <section class="infoTop">
             <div>
               <img src="<%=reply.user.image%>" alt="avatar">
               <h4><%=reply.user.username%></h4>
-              <span>1 month ago</span>
+              <% if (reply.createdString) { %>
+                <span class="created"><%= reply.createdString%>  </span>
+                <% } else {%>
+                  <span class="created"><%= moment(reply.created).fromNow() %>  </span>
+                  <% }%>
             </div>
             <div class="action">
               <div class="button clickable replyButton">
@@ -169,16 +218,16 @@
             </div>
             </div>
           </section>
-          <p><%=reply.content%></p>
+          <p><span class="userTag">@<%=reply.replyingTo.username%> </span> <span class="mainText"><%=reply.content%></span></p>
         </section>
       </section>
       <section class="addComment">
         <div>
           <img src="/images/avatars/image-juliusomo.png" alt="avatar">
         </div>
-        <form>
-        <textarea type="text" placeholder="Add a comment..."></textarea>
-        <button class="clickable">SEND</button>
+        <form method="post" action="<%=reply.user._id%>/<%=comment._id%>/add-reply">
+        <textarea type="text" placeholder="@<%=reply.user.username%>" name="content"></textarea>
+        <button class="clickable">REPLY</button>
       </form>
       </section>
     </section>

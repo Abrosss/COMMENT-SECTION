@@ -140,9 +140,12 @@ main {
   color: hsl(238deg, 40%, 52%);
   font-weight: 700;
 }
+#commentSection .thread .comment .info p {
+  color: hsl(211deg, 10%, 45%);
+}
 #commentSection .thread .comment .info .updateContainer {
   width: 100%;
-  display: none;
+  display: flex;
   justify-content: flex-end;
 }
 #commentSection .thread .comment .info .updateContainer button {
@@ -197,6 +200,9 @@ main {
   height: 6rem;
   resize: none;
   padding: 1rem 1rem;
+  border-radius: 8px;
+  border-color: hsl(223deg, 19%, 93%);
+  cursor: pointer;
 }
 #commentSection .addComment form textarea::-moz-placeholder {
   font-size: 1rem;
@@ -251,6 +257,9 @@ main {
   height: 6rem;
   resize: none;
   padding: 1rem 1rem;
+  border-radius: 8px;
+  border-color: hsl(223deg, 19%, 93%);
+  cursor: pointer;
 }
 .leaveComment form textarea::-moz-placeholder {
   font-size: 1rem;
@@ -271,15 +280,47 @@ main {
   font-weight: 500;
 }
 
-.textarea {
+.editForm {
+  width: 90%;
+  display: none;
+  flex-direction: column;
+  position: relative;
+  gap: 1.5rem;
+}
+.editForm .textarea {
   width: 100%;
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
-  min-height: 5rem;
+  min-height: 8rem;
   resize: none;
   padding: 1rem 1rem;
   font-size: 1rem;
+  border-radius: 8px;
+  border-color: hsl(223deg, 19%, 93%);
+  cursor: pointer;
+}
+
+.editForm.show {
+  display: flex;
+}
+
+.editable {
+  display: block;
+}
+
+.editable.hide {
+  display: none;
+}
+
+.created {
+  color: hsl(211deg, 10%, 45%);
+}
+
+.userTag {
+  font-weight: 700;
+  color: hsl(238deg, 40%, 52%);
+  cursor: pointer;
 }
 
 .clickable {
@@ -291,6 +332,13 @@ main {
 }
 .clickable:hover {
   opacity: 0.5;
+}
+
+.you {
+  padding: 0.1rem 0.5rem;
+  background-color: hsl(238deg, 40%, 52%);
+  color: white;
+  font-size: 0.8rem;
 }
 
 .icon {
@@ -323,10 +371,18 @@ main {
   height: 24px;
 }
 
+.plus.selected {
+  background-image: url(/images/icon-plus-selected.svg);
+}
+
 .minus {
   background-image: url(/images/icon-minus.svg);
   width: 24px;
   height: 24px;
+}
+
+.minus.selected {
+  background-image: url(/images/icon-minus-selected.svg);
 }
 
 @media (max-width: 700px) {

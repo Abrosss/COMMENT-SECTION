@@ -17,13 +17,22 @@ const CommentSchema = mongoose.Schema({
         type:String
     },
     created: { type: Date, default: Date.now },
+    createdString : {
+        type:String
+    },
     score: {
         type:Number
 
     },
     replies : [{
         type:mongoose.Schema.Types.ObjectId, ref: 'Reply'
-    }]
+    }],
+    upvoted : {
+        type:Boolean
+    },
+    downvoted : {
+        type:Boolean
+    },
 
 })
 const ReplySchema = mongoose.Schema({
@@ -31,11 +40,20 @@ const ReplySchema = mongoose.Schema({
         type:String
     },
     created: { type: Date, default: Date.now },
+    createdString : {
+        type:String
+    },
     score: {
         type:String
     },
     replyingTo: {type:mongoose.Schema.Types.ObjectId, ref: 'User'},
-    user : {type:mongoose.Schema.Types.ObjectId, ref: 'User'}
+    user : {type:mongoose.Schema.Types.ObjectId, ref: 'User'},
+    upvoted : {
+        type:Boolean
+    },
+    downvoted : {
+        type:Boolean
+    },
     
     
 })
