@@ -39,7 +39,7 @@
         approveDelete.addEventListener('click', () => {
             const req = new XMLHttpRequest()
             console.log(commentId)
-            req.open('DELETE', `http://localhost:5000/delete-comment/${commentId}`, true)
+            req.open('DELETE', `/delete-comment/${commentId}`, true)
             req.onreadystatechange = function() {
                 if (req.status !== 200 && req.readyState !== 4) {
                     throw new Error ('Bad Request')
@@ -54,7 +54,7 @@
         approveDelete.addEventListener('click', () => {
             const req = new XMLHttpRequest()
     
-            req.open('DELETE', `http://localhost:5000/${replyCommentId}/delete-reply/${replyId}`, true)
+            req.open('DELETE', `/${replyCommentId}/delete-reply/${replyId}`, true)
             req.onreadystatechange = function() {
                 if (req.status !== 200 && req.readyState !== 4) {
                     throw new Error ('Bad Request')
@@ -106,7 +106,7 @@ if(commentId) {
         updateButton.addEventListener('click', (e) => {
 
             const req = new XMLHttpRequest()
-            req.open('PUT', `http://localhost:5000/comment/${commentId}`)
+            req.open('PUT', `/comment/${commentId}`)
             req.setRequestHeader('Content-Type', 'application/json')
             req.addEventListener('load', function() {
               if(req.status === 200 && req.readyState === 4) {
@@ -158,7 +158,7 @@ if(commentId) {
                 updateButton.addEventListener('click', (e) => {
         
                     const req = new XMLHttpRequest()
-                    req.open('PUT', `http://localhost:5000/reply/${replyId}`)
+                    req.open('PUT', `/reply/${replyId}`)
                     req.setRequestHeader('Content-Type', 'application/json')
                     req.addEventListener('load', function() {
                       if(req.status === 200 && req.readyState === 4) {
@@ -249,7 +249,7 @@ replyButtons.forEach(button => {
                 };
                 const replyId = upvoteContainer.dataset.replyid
                 const req = new XMLHttpRequest()
-              req.open('PUT', `http://localhost:5000/reply/${replyId}`)
+              req.open('PUT', `/reply/${replyId}`)
               req.setRequestHeader('Content-Type', 'application/json')
               req.addEventListener('load', function() {
                 if(req.status === 200 && req.readyState === 4) {
@@ -269,7 +269,7 @@ replyButtons.forEach(button => {
                 };
                 const commentId = upvoteContainer.dataset.commentid
                 const req = new XMLHttpRequest()
-              req.open('PUT', `http://localhost:5000/comment/${commentId}`)
+              req.open('PUT', `/comment/${commentId}`)
               req.setRequestHeader('Content-Type', 'application/json')
               req.addEventListener('load', function() {
                 if(req.status === 200 && req.readyState === 4) {
