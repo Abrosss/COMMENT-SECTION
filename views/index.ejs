@@ -62,7 +62,7 @@
       <section class="infoTop">
         <div>
           
-          <img src="<%=comment.user.image%>">
+          <img src="<%=comment.user.image%>" alt="avatar">
           <h4><%=comment.user.username%></h4>
           <span class="you">you</span>
           <% if (comment.createdString) { %>
@@ -119,7 +119,7 @@
         <section class="infoTop">
           <div>
             
-            <img src="<%=comment.user.image%>">
+            <img src="<%=comment.user.image%>" alt="avatar">
             <h4><%=comment.user.username%></h4>
             <% if (comment.createdString) { %>
             <span class="created"><%= comment.createdString%>  </span>
@@ -143,7 +143,7 @@
       <img src="/images/avatars/image-juliusomo.png" alt="avatar">
     </div>
     <form method="post" action="<%=comment.user._id%>/<%=comment._id%>/add-reply">
-    <textarea type="text" placeholder="@<%=comment.user.username%>" name="content"></textarea>
+    <textarea placeholder="@<%=comment.user.username%>" name="content"></textarea>
     <button class="clickable">REPLY</button>
   </form>
   </section>
@@ -214,7 +214,7 @@
             <img src="/images/avatars/image-juliusomo.png" alt="avatar">
           </div>
           <form>
-          <textarea type="text" placeholder="Add a comment..."></textarea>
+          <textarea placeholder="Add a comment..."></textarea>
           <button class="clickable">SEND</button>
         </form>
         </section>
@@ -269,7 +269,7 @@
           <img src="/images/avatars/image-juliusomo.png" alt="avatar">
         </div>
         <form method="post" action="<%=reply.user._id%>/<%=comment._id%>/add-reply">
-        <textarea type="text" placeholder="@<%=reply.user.username%>" name="content"></textarea>
+        <textarea placeholder="@<%=reply.user.username%>" name="content"></textarea>
         <button class="clickable">REPLY</button>
       </form>
       </section>
@@ -285,7 +285,7 @@
       <img src="/images/avatars/image-juliusomo.png" alt="avatar">
     </div>
     <form method="post" action="/add-comment">
-    <textarea type="text" placeholder="Add a comment..." name="content"></textarea>
+    <textarea placeholder="Add a comment..." name="content"></textarea>
     <button class="clickable">SEND</button>
   </form>
   </section>
