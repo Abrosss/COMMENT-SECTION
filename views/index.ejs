@@ -31,6 +31,7 @@
   <section class="thread">
     <% if (comment.user._id=='63144e8ec1250ba70cc3efbb') { %>
   <section class="comment">
+    <section class="mobile">
     <div class="upvoter" data-commentid="<%=comment._id%>">
       <% if (comment.upvoted) { %>
       <span class="icon plus clickable upvote selected"></span>
@@ -44,6 +45,19 @@
           <span class="icon minus clickable upvote"></span>
           <% }%>
     </div>
+    <div class="actionMobile">
+      <div class="button clickable deleteButton deleteComment" data-id="<%=comment._id%>">
+      <span class="icon delete"></span>
+      <span>Delete</span>
+      
+    </div>
+    
+    <div class="button clickable editButton editComment" data-id="<%=comment._id%>">
+      <span class="icon edit"></span>
+      <span>Edit</span>
+    </div>
+    </div>
+  </section>
     <section class="info">
       <section class="infoTop">
         <div>
@@ -78,6 +92,7 @@
   </section>
   <% } else {%>
     <section class="comment">
+      <section class="mobile">
       <div class="upvoter" data-commentid="<%=comment._id%>">
         <% if (comment.upvoted) { %>
           <span class="icon plus clickable upvote selected"></span>
@@ -92,6 +107,13 @@
             <% }%>
        
       </div>
+      <div class="actionMobile">
+        <div class="button clickable replyButton">
+        <span class="icon reply"></span>
+        <span>Reply</span>
+      </div>
+      </div>
+    </section>
       <section class="info">
         <section class="infoTop">
           <div>
@@ -129,6 +151,7 @@
     <% if (reply.user._id=='63144e8ec1250ba70cc3efbb') { %>
       <section class="replySection">
         <section class="comment">
+          <section class="mobile">
           <div class="upvoter" data-replyid="<%=reply._id%>">
             <% if (reply.upvoted) { %>
               <span class="icon plus clickable upvote selected"></span>
@@ -142,6 +165,17 @@
                   <span class="icon minus clickable upvote"></span>
                   <% }%>
           </div>
+          <div class="actionMobile">
+            <div class="button clickable deleteButton deleteReply" data-id="<%=reply._id%>" data-commentId="<%=comment._id%>">
+            <span class="icon delete"></span>
+            <span>Delete</span>
+          </div>
+          <div class="button clickable editButton editReply" data-id="<%=reply._id%>">
+            <span class="icon edit"></span>
+            <span>Edit</span>
+          </div>
+          </div>
+        </section>
           <section class="info">
             <section class="infoTop">
               <div>
@@ -187,6 +221,7 @@
   <% } else {%>
     <section class="replySection">
       <section class="comment">
+        <section class="mobile">
         <div class="upvoter" data-replyid="<%=reply._id%>">
           <% if (reply.upvoted) { %>
             <span class="icon plus clickable upvote selected"></span>
@@ -200,6 +235,13 @@
                 <span class="icon minus clickable upvote"></span>
                 <% }%>
         </div>
+        <div class="actionMobile">
+          <div class="button clickable replyButton">
+          <span class="icon reply"></span>
+          <span>Reply</span>
+        </div>
+        </div>
+      </section>
         <section class="info">
           <section class="infoTop">
             <div>

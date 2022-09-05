@@ -74,14 +74,24 @@
 editButtons.forEach(button => {
     
     if(button.classList.contains('editComment')) {
-        const container = button.closest('.info');
-        const editSection = container.querySelector('.editable')
-        const form = container.querySelector('.editForm')
-        const textarea = form.querySelector('.textarea')
-        const updateButton = form.querySelector('.updateButton')
-        let commentId
+      
         
         button.addEventListener('click', () => {
+            let container
+            if (window.innerWidth < 960) {
+                 const editButtonContainer = button.closest('.mobile')
+            container = editButtonContainer.nextElementSibling
+            }
+            else {
+                container = button.closest('.info')
+            }
+           
+         
+            const editSection = container.querySelector('.editable')
+            const form = container.querySelector('.editForm')
+            const textarea = form.querySelector('.textarea')
+            const updateButton = form.querySelector('.updateButton')
+            let commentId
             form.classList.toggle('show')
             editSection.classList.toggle('hide')
            commentId = button.dataset.id
@@ -115,14 +125,18 @@ if(commentId) {
         })
     }
     if(button.classList.contains('editReply')) {
-        const container = button.closest('.info');
-        const editSection = container.querySelector('.editable')
-        const mainText = editSection.querySelector('.mainText')
-        const form = container.querySelector('.editForm')
-        const textarea = form.querySelector('.textarea')
-        const updateButton = form.querySelector('.updateButton')
+     
         let replyId 
         button.addEventListener('click', () => {
+            const editButtonContainer = button.closest('.mobile');
+            console.log(button)
+            const container = editButtonContainer.nextElementSibling
+            const editSection = container.querySelector('.editable')
+            console.log(container)
+            const mainText = editSection.querySelector('.mainText')
+            const form = container.querySelector('.editForm')
+            const textarea = form.querySelector('.textarea')
+            const updateButton = form.querySelector('.updateButton')
             form.classList.toggle('show')
             editSection.classList.toggle('hide')
             replyId = button.dataset.id
@@ -169,6 +183,9 @@ if(commentId) {
    
 })
 })();
+
+
+
 (function() {
 const replyButtons = document.querySelectorAll('.replyButton')
 replyButtons.forEach(button => {
