@@ -1,7 +1,7 @@
 
 
 
-
+//delete
 (function() {
     const deleteButtons = document.querySelectorAll('.deleteButton')
     const modalPopup = document.querySelector('.deleteContainer')
@@ -67,6 +67,7 @@
     }
     
 })();
+//edit
 (function() {
     const editButtons = document.querySelectorAll('.editButton')
     //https://plnkr.co/edit/hi6zoBbDbBiSRftV?p=preview&preview
@@ -185,7 +186,7 @@ if(commentId) {
 })();
 
 
-
+//reply
 (function() {
 const replyButtons = document.querySelectorAll('.replyButton')
 replyButtons.forEach(button => {
@@ -198,6 +199,7 @@ replyButtons.forEach(button => {
 })
 })();
 
+//upvote, downvote
 (function() {
     const upvoteButtons = document.querySelectorAll('.upvote')
 
