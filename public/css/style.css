@@ -267,6 +267,7 @@ main {
 .leaveComment form textarea {
   width: 80%;
   height: 6rem;
+  outline: none;
   resize: none;
   padding: 1rem 1rem;
   border-radius: 8px;
