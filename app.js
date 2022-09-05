@@ -21,12 +21,6 @@ const app = express()
     app.locals.moment = require('moment');    //https://stackoverflow.com/questions/12794860/how-to-use-node-modules-like-momentjs-in-ejs-views
 
 
-
-  
-    
-
-      
-
             const commentSection = require('./routes/home.js')
 
 
