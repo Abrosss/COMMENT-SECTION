@@ -77,7 +77,7 @@ main {
 #commentSection {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   min-width: 10rem;
 }
 #commentSection .thread {
@@ -87,7 +87,7 @@ main {
   height: min-content;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 #commentSection .thread .comment {
   display: flex;

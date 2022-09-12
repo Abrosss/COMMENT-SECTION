@@ -75,14 +75,14 @@ main {
 #commentSection {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     min-width: 10rem;
     .thread {
         width: 100%;
          height: min-content;
          display: flex;
          flex-direction: column;
-         gap: 1.5rem;
+         gap: 1rem;
 .comment {
     display: flex;
     align-items: flex-start;
