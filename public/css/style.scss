@@ -135,6 +135,9 @@ main {
                     
                     
                 }
+                .deleteButton {
+                    color: $soft-red;
+                }
               
                 
             }
@@ -242,7 +245,7 @@ main {
     width: 100%;
       
         display: flex;
-        padding: 2rem 2rem;
+        padding: 1.5rem 2rem;
         border-radius: 8px;
         background-color: white;
         gap: 1.5rem;
@@ -412,6 +415,9 @@ main {
                                        
                                         color: $mid-blue;
                                         font-weight: 700;
+                            }
+                            .deleteButton {
+                                color: $soft-red;
                             }
                         }
                         

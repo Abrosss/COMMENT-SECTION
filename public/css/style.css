@@ -140,6 +140,9 @@ main {
   color: hsl(238deg, 40%, 52%);
   font-weight: 700;
 }
+#commentSection .thread .comment .info .infoTop .action .deleteButton {
+  color: hsl(358deg, 79%, 66%);
+}
 #commentSection .thread .comment .info p {
   color: hsl(211deg, 10%, 45%);
 }
@@ -241,7 +244,7 @@ main {
 .leaveComment {
   width: 100%;
   display: flex;
-  padding: 2rem 2rem;
+  padding: 1.5rem 2rem;
   border-radius: 8px;
   background-color: white;
   gap: 1.5rem;
@@ -439,6 +442,9 @@ main {
     gap: 0.4rem;
     color: hsl(238deg, 40%, 52%);
     font-weight: 700;
+  }
+  main #commentSection .thread .comment .mobile .actionMobile .deleteButton {
+    color: hsl(358deg, 79%, 66%);
   }
   main #commentSection .thread .comment .upvoter {
     display: flex;
